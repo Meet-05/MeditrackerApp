@@ -7,6 +7,7 @@ import '../widgets/custom_bottom_sheet.dart';
 import 'package:app_frontend/constants.dart';
 import 'package:app_frontend/contollers/api/api.dart';
 import './show_disease_screen.dart';
+import 'package:progress_indicators/progress_indicators.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -32,38 +33,51 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class NextButton extends StatelessWidget {
+class NextButton extends StatefulWidget {
   const NextButton({
     Key key,
   }) : super(key: key);
-  // void findIndex(List<String> selectedSymptoms) {
-  //   List<int> symptomIndex =
-  //       selectedSymptoms.map((e) => constant.symptoms.indexOf(e)).toList();
-  //   for (int i in symptomIndex) {
-  //     print(i);
-  //   }
-  // }
 
+  @override
+  _NextButtonState createState() => _NextButtonState();
+}
+
+class _NextButtonState extends State<NextButton> {
+  bool isProcessing = false;
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: MaterialButton(
-          child: Card(
-            elevation: 20.0,
-            shape: StadiumBorder(),
-            child: Padding(
-                padding: const EdgeInsets.all(10.0), child: Text('Next')),
-          ),
-          onPressed: () async {
-            List<String> selectedSymptoms =
-                Provider.of<SymptomProvider>(context, listen: false)
-                    .selectedSymptoms;
-            var result = await getPrediction(selectedSymptoms);
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => ShowDiseaseScreen(disease: result)));
-          }),
+      child: isProcessing
+          ? JumpingDotsProgressIndicator(fontSize: 60.0)
+          : MaterialButton(
+              child: Card(
+                elevation: 20.0,
+                shape: StadiumBorder(),
+                child: Padding(
+                    padding: const EdgeInsets.all(10.0), child: Text('Next')),
+              ),
+              onPressed: () async {
+                List<String> selectedSymptoms =
+                    Provider.of<SymptomProvider>(context, listen: false)
+                        .selectedSymptoms;
+                setState(() {
+                  isProcessing = true;
+                });
+
+                var result = await getPrediction(selectedSymptoms);
+                var doctors = await findLocalDoctors('Diabetes');
+                setState(() {
+                  isProcessing = false;
+                });
+
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ShowDiseaseScreen(
+                              disease: result,
+                              doctors: doctors,
+                            )));
+              }),
     );
   }
 }

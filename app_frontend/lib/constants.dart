@@ -131,3 +131,127 @@ List<String> symptoms = [
   ' yellowish_skin',
   'itching'
 ];
+
+List<dynamic> doctors = [
+//in mumbai
+  {
+    "name": "Nikhat Nachik",
+    "phone": 12346798,
+    "lat": 19.102045754631167,
+    "long": 72.92839706288086,
+    "opening": "2:00 pm",
+    "closing": "3:00pm",
+    "diseases": ['Fungal infection', 'Jaundice', 'Diabetes', 'Migraine']
+  },
+  {
+    "name": "Stanley",
+    "phone": 12346798,
+    "lat": 19.10889895232196,
+    "long": 72.90565192925476,
+    "opening": "2:00 pm",
+    "closing": "3:00pm",
+    "diseases": ['Malaria', 'Jaundice', 'Chicken pox', 'Typhoid']
+  },
+  {
+    "name": "Basudha Selvi",
+    "phone": 12346798,
+    "lat": 19.09042548238461,
+    "long": 72.9047306401247,
+    "opening": "2:00 pm",
+    "closing": "3:00pm",
+    "diseases": ['Dengue', 'Hyperthyroidism', 'Diabetes', 'Migraine']
+  },
+  //----usa,mountainview
+  {
+    "name": "Suprakash Vaishnavi",
+    "phone": 12346798,
+    "lat": 37.18331992252706,
+    "long": -122.34539970651653,
+    "opening": "2:00 pm",
+    "closing": "3:00pm",
+    "diseases": ['Hepatitis B', 'Alcoholic hepatitis', 'Diabetes', 'Migraine']
+  },
+  {
+    "name": "Dharma Niramitra",
+    "phone": 12346798,
+    "lat": 37.1359789304352,
+    "long": -122.22166559337278,
+    "opening": "2:00 pm",
+    "closing": "3:00pm",
+    "diseases": ['Fungal infection', 'Jaundice', 'Diabetes', 'Migraine']
+  },
+//-----
+  {
+    "name": "Nikhat Nachik",
+    "phone": 12346798,
+    "lat": 37.42094943232773,
+    "long": -122.08710571255817,
+    "opening": "2:00 pm",
+    "closing": "3:00pm",
+    "diseases": ['Fungal infection', 'Diabetes', 'Migraine']
+  },
+  {
+    "name": "Stanley",
+    "phone": 12346798,
+    "lat": 37.42466439200042,
+    "long": -122.10238357592841,
+    "opening": "2:00 pm",
+    "closing": "3:00pm",
+    "diseases": ['Malaria', 'Jaundice', 'Chicken pox', 'Typhoid']
+  },
+  {
+    "name": "Basudha Selvi",
+    "phone": 12346798,
+    "lat": 37.40788284565721,
+    "long": -122.0967598905863,
+    "opening": "2:00 pm",
+    "closing": "3:00pm",
+    "diseases": ['Dengue', 'Hyperthyroidism', 'Diabetes', 'Migraine']
+  },
+  //----
+  {
+    "name": "Suprakash Vaishnavi",
+    "phone": 12346798,
+    "lat": 37.18331992252706,
+    "long": -122.34539970651653,
+    "opening": "2:00 pm",
+    "closing": "3:00pm",
+    "diseases": ['Hepatitis B', 'Alcoholic hepatitis', 'Diabetes', 'Migraine']
+  },
+  {
+    "name": "Dharma Niramitra",
+    "phone": 12346798,
+    "lat": 37.1359789304352,
+    "long": -122.22166559337278,
+    "opening": "2:00 pm",
+    "closing": "3:00pm",
+    "diseases": ['Fungal infection', 'Diabetes', 'Migraine']
+  },
+  {
+    "name": "Akmal Lahiri",
+    "phone": 12346798,
+    "lat": 37.01351077265561,
+    "long": -121.98484730401294,
+    "opening": "2:00 pm",
+    "closing": "3:00pm",
+    "diseases": ['Fungal infection', 'Jaundice', 'Diabetes', 'Migraine']
+  },
+  {
+    "name": "Ashraf Labhsha",
+    "phone": 12346798,
+    "lat": 36.977397477983786,
+    "long": -121.94191304052721,
+    "opening": "2:00 pm",
+    "closing": "3:00pm",
+    "diseases": ['Fungal infection', 'Jaundice', 'Diabetes', 'Migraine']
+  },
+  {
+    "name": "Pandhari Tatavarti",
+    "phone": 12346798,
+    "lat": 36.970372961376505,
+    "long": -121.96933147642106,
+    "opening": "2:00 pm",
+    "closing": "3:00pm",
+    "diseases": ['Fungal infection', 'Jaundice', 'Diabetes', 'Migraine']
+  }
+];

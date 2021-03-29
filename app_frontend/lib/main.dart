@@ -7,6 +7,7 @@ import './views/screens/home_screen.dart';
 import './views/widgets/loading_widget.dart';
 import 'package:firebase_core/firebase_core.dart';
 import './contollers/symptoms/symptom_provider.dart';
+import './contollers/services/location.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,8 +15,25 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   // This widget is the root of your application.
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Location currentLocation = Location();
+  void getLocation() async {
+    await currentLocation.getLocation();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getLocation();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
