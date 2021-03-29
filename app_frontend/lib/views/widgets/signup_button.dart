@@ -9,32 +9,27 @@ class SignupButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-   
       child: Card(
-        
         elevation: 20.0,
         shape: StadiumBorder(),
-        
-              child: Padding(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,    
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: iconToShow,
-            ),
-            Text(
+                child: iconToShow,
+              ),
+              Text(
                 text,
                 style: TextStyle(fontSize: 25.0),
-            )
-          ],
+              )
+            ],
+          ),
         ),
-              ),
       ),
       onPressed: onTap,
     );
-
-   
   }
 }
