@@ -7,53 +7,65 @@ class ShowDiseaseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color(0xFFF4F5F9),
         body: SafeArea(
-      child: Column(
-        children: [
-          Center(
-            child: Container(
-              margin: EdgeInsets.all(10.0),
-              padding: EdgeInsets.all(20.0),
-              decoration:
-                  BoxDecoration(border: Border.all(color: Colors.black)),
-              child: Text(
-                disease,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
+          child: Column(
+            children: [
+              Center(
+                child: Container(
+                  margin: EdgeInsets.all(10.0),
+                  padding: EdgeInsets.all(20.0),
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.black)),
+                  child: Text(
+                    disease,
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
+                  ),
+                ),
               ),
-            ),
-          ),
-          Expanded(
-            child: Container(
-              margin: EdgeInsets.only(top: 20.0),
-              padding: EdgeInsets.all(20.0),
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50.0),
-                      topRight: Radius.circular(50.0))),
-              child: ListView.builder(
-                  itemCount: doctors.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                          color: Colors.grey[100],
-                          border: Border.all(color: Colors.black),
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(20.0))),
-                      child: ListTile(
-                        title: Text(doctors[index]['name']),
-                        subtitle: Text('${doctors[index]['phone']}'),
-                        trailing: Text(
-                            '${doctors[index]['distance'].toStringAsFixed(1)} kms away'),
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.only(top: 20.0),
+                  padding: EdgeInsets.all(20.0),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black),
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(50.0),
+                          topRight: Radius.circular(50.0))),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Doctors Treating $disease',
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                    );
-                  }),
-            ),
-          )
-        ],
-      ),
-    ));
+                      Expanded(
+                        child: ListView.builder(
+                            itemCount: doctors.length,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                margin: EdgeInsets.all(10.0),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    // border: Border.all(color: Colors.black),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(20.0))),
+                                child: ListTile(
+                                  title: Text(doctors[index]['name']),
+                                  subtitle: Text('${doctors[index]['phone']}'),
+                                  trailing: Text(
+                                      '${doctors[index]['distance'].toStringAsFixed(1)} kms away'),
+                                ),
+                              );
+                            }),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ));
   }
 }

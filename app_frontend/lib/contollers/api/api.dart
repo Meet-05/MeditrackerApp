@@ -13,7 +13,8 @@ Future getPrediction(List<String> selectedSymptoms) async {
   print(symptomIndex[0]);
   Map<String, List<int>> data = {'symptoms': symptomIndex};
   var body = json.encode(data);
-  var url = Uri.parse('http://10.0.2.2:8000/v1/predict');
+ // http://10.0.2.2:8000/v1/predict
+  var url = Uri.parse('https://meditracker-apiv1.herokuapp.com/v1/predict');
   var response = await http.post(url,
       headers: {"Content-Type": "application/json"}, body: body);
   print('Response status: ${response.statusCode}');
