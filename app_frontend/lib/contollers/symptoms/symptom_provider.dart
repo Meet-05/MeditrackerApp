@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:app_frontend/constants.dart' as constant;
@@ -12,8 +10,10 @@ class SymptomProvider extends ChangeNotifier {
   List<String> selectedSymptoms = [];
 
   List<String> symptomsToShow = [...constant.symptoms];
-
-  Void searchResult(String query) {
+  String global_query;
+  void searchResult(String query) {
+    print(query);
+    global_query = query;
     List<String> results = [];
     for (String symptom in symptoms) {
       if (symptom.contains(query)) {

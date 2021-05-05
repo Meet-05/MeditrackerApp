@@ -2,10 +2,10 @@ import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:app_frontend/constants.dart' as constant;
-import 'package:app_frontend/constants.dart' as constant;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:app_frontend/contollers/services/location.dart';
 import 'package:geocoder/geocoder.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 Future getPrediction(List<String> selectedSymptoms) async {
   List<int> symptomIndex =
@@ -13,7 +13,7 @@ Future getPrediction(List<String> selectedSymptoms) async {
   print(symptomIndex[0]);
   Map<String, List<int>> data = {'symptoms': symptomIndex};
   var body = json.encode(data);
- // http://10.0.2.2:8000/v1/predict
+  // http://10.0.2.2:8000/v1/predict
   var url = Uri.parse('https://meditracker-apiv1.herokuapp.com/v1/predict');
   var response = await http.post(url,
       headers: {"Content-Type": "application/json"}, body: body);
@@ -25,6 +25,13 @@ Future getPrediction(List<String> selectedSymptoms) async {
 }
 
 final firestoreInstance = FirebaseFirestore.instance;
+User user = FirebaseAuth.instance.currentUser;
+
+void addSymptom(String symptom) {
+  firestoreInstance
+      .collection('symptomsAdded')
+      .add({'userId': user.uid, 'symptomAdded': symptom});
+}
 
 Future<dynamic> findLocalDoctors(String disease) async {
   //find current exact location of user

@@ -12,7 +12,7 @@ class AuthScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            'images/logo.png',
+            'assets/images/logo.png',
           ),
           SizedBox(
             height: 40.0,
