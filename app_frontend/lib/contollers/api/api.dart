@@ -34,6 +34,8 @@ void addSymptom(String symptom) {
 }
 
 Future<dynamic> findLocalDoctors(String disease) async {
+  //--toadddoctors run only once
+  // await addDoctors();
   //find current exact location of user
   Location location = Location();
   await location.getLocation();
@@ -67,7 +69,6 @@ Future<dynamic> findLocalDoctors(String disease) async {
       'distance': dist
     });
   }
-
 //sorting the doctors list based on the current location of the user
   tempList.sort((a, b) => a['distance'].compareTo(b['distance']));
   tempList.forEach((element) {
@@ -75,24 +76,27 @@ Future<dynamic> findLocalDoctors(String disease) async {
   });
   return tempList;
 }
+
+void addDoctors() async {
 // --used to store doctor data in cloudifirestore
-// for (var doctor in constant.doctors) {
-//   var coordinates = new Coordinates(doctor['lat'], doctor['long']);
-//   var address =
-//       await Geocoder.local.findAddressesFromCoordinates(coordinates);
-//   var first = address.first;
-//   doctor["city"] = first.locality;
-//   print(first.locality);
-//   firestoreInstance.collection("doctors").add({
-//     "name": doctor["name"],
-//     "phone": doctor["phone"],
-//     "lat": doctor["lat"],
-//     "long": doctor["long"],
-//     "city": doctor["city"],
-//     "opening": doctor["opening"],
-//     "closing": doctor["closing"],
-//     "diseases": doctor["diseases"]
-//   }).then((_) {
-//     print("success!");
-//   });
-// }
+  for (var doctor in constant.doctors) {
+    var coordinates = new Coordinates(doctor['lat'], doctor['long']);
+    var address =
+        await Geocoder.local.findAddressesFromCoordinates(coordinates);
+    var first = address.first;
+    doctor["city"] = first.locality;
+    print(first.locality);
+    firestoreInstance.collection("doctors").add({
+      "name": doctor["name"],
+      "phone": doctor["phone"],
+      "lat": doctor["lat"],
+      "long": doctor["long"],
+      "city": doctor["city"],
+      "opening": doctor["opening"],
+      "closing": doctor["closing"],
+      "diseases": doctor["diseases"]
+    }).then((_) {
+      print("success!");
+    });
+  }
+}

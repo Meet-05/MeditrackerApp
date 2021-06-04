@@ -6,6 +6,7 @@ import 'package:app_frontend/contollers/symptoms/symptom_provider.dart';
 import '../screens/show_disease_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:app_frontend/contollers/symptoms/symptom_provider.dart';
+import 'package:app_frontend/contollers/api/admin_logger.dart';
 
 class NextButton extends StatefulWidget {
   const NextButton({
@@ -58,7 +59,7 @@ class _NextButtonState extends State<NextButton> {
                     result = await getPrediction(selectedSymptoms);
                   }
 
-                  var doctors = await findLocalDoctors('Diabetes');
+                  var doctors = await findLocalDoctors(result);
                   setState(() {
                     isProcessing = false;
                   });
@@ -72,6 +73,7 @@ class _NextButtonState extends State<NextButton> {
                 } else {
                   print('not selected');
                 }
+                logSymptom(selectedSymptoms);
               }),
     );
   }

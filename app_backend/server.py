@@ -8,7 +8,7 @@ app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 
 
-# get req with body as [40,42,12] and response as predicted disease
+# post req with body as [40,42,12] and response as predicted disease
 @app.route('/v1/predict', methods=['POST'])
 def predict_disease():
     data = request.get_json()

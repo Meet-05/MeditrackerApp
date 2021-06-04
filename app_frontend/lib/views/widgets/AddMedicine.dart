@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app_frontend/database/moor_database.dart';
 import 'package:app_frontend/notifications/NotificationManager.dart';
+import 'package:app_frontend/contollers/api/admin_logger.dart';
 
 class AddMedicine extends StatefulWidget {
   final double height;
@@ -172,6 +173,10 @@ class _AddMedicineState extends State<AddMedicine> {
         Navigator.pop(context, medicineId);
       });
     }
+
+    //log the medicine
+
+    medicineLogger(_name);
   }
 
   Widget _buildIcons(int index) {
